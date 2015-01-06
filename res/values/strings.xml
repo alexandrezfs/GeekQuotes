@@ -6,4 +6,6 @@
         <item>citation 2</item>
         <item>citation toto</item>
     </string-array>
+    <color name="list_light_color">#ccc</color>
+    <color name="list_dark_color">#bbb</color>
 </resources>

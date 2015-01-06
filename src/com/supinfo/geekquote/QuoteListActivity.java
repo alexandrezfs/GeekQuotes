@@ -1,8 +1,11 @@
 package com.supinfo.geekquote;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import com.supinfo.geekquote.model.Quote;
 
 import java.util.ArrayList;
@@ -40,5 +43,20 @@ public class QuoteListActivity extends Activity {
         quote.setStrQuote(strQuote);
 
         this.quoteList.add(quote);
+
+        LinearLayout ll = (LinearLayout) findViewById(R.id.generalLayout);
+
+        EditText et = new EditText(this);
+
+        et.setText(strQuote);
+
+        if(quoteList.indexOf(quote) % 2 == 0) {
+            et.setBackgroundColor(getResources().getColor(R.color.list_dark_color));
+        }
+        else {
+            et.setBackgroundColor(getResources().getColor(R.color.list_light_color));
+        }
+
+        ll.addView(et);
     }
 }
