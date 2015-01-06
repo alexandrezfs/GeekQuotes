@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Geek Quote</string>
+    <string-array name="quoteList">
+        <item>citation 1</item>
+        <item>citation 2</item>
+        <item>citation toto</item>
+    </string-array>
+</resources>
