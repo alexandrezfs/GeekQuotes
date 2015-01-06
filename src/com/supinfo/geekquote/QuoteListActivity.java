@@ -4,8 +4,8 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.*;
 import com.supinfo.geekquote.model.Quote;
 
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ public class QuoteListActivity extends Activity {
      */
 
     private List<Quote> quoteList = new ArrayList();
+    private QuoteListAdapter listAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class QuoteListActivity extends Activity {
 
         String[] stringsTable = this.getResources().getStringArray(R.array.quoteList);
 
+        ListView quotesLv = (ListView) findViewById(R.id.quotesListView);
+
         for(String strQuote : stringsTable) {
             addQuote(strQuote);
         }
@@ -33,6 +36,22 @@ public class QuoteListActivity extends Activity {
         for(Quote quote : quoteList) {
             Log.d("QUOTE", quote.getStrQuote());
         }
+
+        Button button = (Button) findViewById(R.id.addQuoteButton);
+        final EditText et = (EditText) findViewById(R.id.quoteField);
+
+        listAdapter = new QuoteListAdapter(this, android.R.layout.simple_list_item_1, quoteList);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addQuote(et.getText().toString());
+                et.setText("");
+                listAdapter.notifyDataSetChanged();
+            }
+        });
+
+        quotesLv.setAdapter(listAdapter);
     }
 
     public void addQuote(String strQuote) {
@@ -43,20 +62,5 @@ public class QuoteListActivity extends Activity {
         quote.setStrQuote(strQuote);
 
         this.quoteList.add(quote);
-
-        LinearLayout ll = (LinearLayout) findViewById(R.id.generalLayout);
-
-        EditText et = new EditText(this);
-
-        et.setText(strQuote);
-
-        if(quoteList.indexOf(quote) % 2 == 0) {
-            et.setBackgroundColor(getResources().getColor(R.color.list_dark_color));
-        }
-        else {
-            et.setBackgroundColor(getResources().getColor(R.color.list_light_color));
-        }
-
-        ll.addView(et);
     }
 }

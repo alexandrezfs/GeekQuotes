@@ -34,4 +34,13 @@ public class Quote {
     public void setStrQuote(String strQuote) {
         this.strQuote = strQuote;
     }
+
+    @Override
+    public String toString() {
+        return "Quote{" +
+                "creationDate=" + creationDate +
+                ", strQuote='" + strQuote + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }

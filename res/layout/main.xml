@@ -17,7 +17,8 @@
                 android:id="@+id/quoteField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                />
 
             <Button
                 android:id="@+id/addQuoteButton"
@@ -25,6 +26,12 @@
                 android:layout_height="wrap_content"
                 android:text="Add Quote"/>
         </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/quotesListView"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
 
